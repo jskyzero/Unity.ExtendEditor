@@ -1,10 +1,7 @@
-// Reference https://docs.unity3d.com/Manual/ExtendingTheEditor.html
-
 using UnityEditor;
 using UnityEngine;
 
-public class HelloWindow : EditorWindow
-{
+public class HelloWindow : EditorWindow {
     string myString = "Hello World";
     bool groupEnabled;
     bool myBool = true;
@@ -12,14 +9,12 @@ public class HelloWindow : EditorWindow
 
     // Add menu item named "My Window" to the Window menu
     [MenuItem("Jsky/HelloWorld")]
-    public static void ShowWindow()
-    {
+    public static void ShowWindow() {
         //Show existing window instance. If one doesn't exist, make one.
         EditorWindow.GetWindow(typeof(HelloWindow));
     }
 
-    void OnGUI()
-    {
+    void OnGUI() {
         GUILayout.Label("Hello", EditorStyles.boldLabel);
         myString = EditorGUILayout.TextField("Text Field", myString);
 
