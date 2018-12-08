@@ -69,7 +69,7 @@ public class PropertyDrawers : MonoBehaviour {
             else if (property.propertyType == SerializedPropertyType.Integer)
                 EditorGUI.Slider(position, property, (int) range.min, (int)range.max, label);
             else
-            EditorGUI.LabelField(position, label.text, "Use MyRange with float or int.");
+                EditorGUI.LabelField(position, label.text, "Use MyRange with float or int.");
 
         }
     }

@@ -5,32 +5,32 @@ using UnityEngine;
 
 class TreeView : EditorWindow {
 
-    [UnityEngine.SerializeField]
-    // The TreeElement data class is extended to hold extra data, which you show and edit in the
-    // front-end TreeView.
-    internal class SimpleTreeElement : TreeViewItem {
-        public float floatValue1, floatValue2, floatValue3;
-        public Material material;
-        public string text = "";
-        public bool enable = true;
+    // [UnityEngine.SerializeField]
+    // // The TreeElement data class is extended to hold extra data, which you show and edit in the
+    // // front-end TreeView.
+    // internal class SimpleTreeElement : TreeViewItem {
+    //     public float floatValue1, floatValue2, floatValue3;
+    //     public Material material;
+    //     public string text = "";
+    //     public bool enable = true;
 
-        public SimpleTreeElement(int id, int depth, string name) : base(id, depth, name) {
-            floatValue1 = Random.value;
-            floatValue2 = Random.value;
-            floatValue3 = Random.value;
-        }
-    }
+    //     public SimpleTreeElement(int id, int depth, string name) : base(id, depth, name) {
+    //         floatValue1 = Random.value;
+    //         floatValue2 = Random.value;
+    //         floatValue3 = Random.value;
+    //     }
+    // }
 
-    [CreateAssetMenu(fileName = "TreeDataAsset", menuName = "Tree Asset", order = 1)]
-    public class SimpleTreeAsset : ScriptableObject {
-        [SerializeField]
-        List<SimpleTreeElement> m_TreeElements = new List<SimpleTreeElement>();
+    // [CreateAssetMenu(fileName = "TreeDataAsset", menuName = "Tree Asset", order = 1)]
+    // public class SimpleTreeAsset : ScriptableObject {
+    //     [SerializeField]
+    //     List<SimpleTreeElement> m_TreeElements = new List<SimpleTreeElement>();
 
-        internal List<SimpleTreeElement> treeElements {
-            get { return m_TreeElements; }
-            set { m_TreeElements = value; }
-        }
-    }
+    //     internal List<SimpleTreeElement> treeElements {
+    //         get { return m_TreeElements; }
+    //         set { m_TreeElements = value; }
+    //     }
+    // }
 
     class SimpleTreeView : UnityEditor.IMGUI.Controls.TreeView {
         public SimpleTreeView(TreeViewState treeViewState) : base(treeViewState) {
