@@ -33,7 +33,7 @@ public class SystemManager : MonoBehaviour {
           .OrderBy(x => x)
           .ToList()
           .ForEach(new Action<int>(x => {
-              Debug.Log(x.ToString() + " ");
+            //   Debug.Log(x.ToString() + " ");
           }));
     });
   }
@@ -53,7 +53,8 @@ public class SystemManager : MonoBehaviour {
 
     for (int i = 0; i < n; i++) {
       Vector3 randomPosition = new Vector3(
-        UnityEngine.Random.Range(-MapSize, MapSize), 0.75f, UnityEngine.Random.Range(-MapSize, MapSize));
+        UnityEngine.Random.Range(-MapSize, MapSize), 0.75f, 
+        UnityEngine.Random.Range(-MapSize, MapSize));
       Instantiate(
         Resources.Load("Prefabs/Cube"), randomPosition, new Quaternion(),
         pickUpHolder.transform);
