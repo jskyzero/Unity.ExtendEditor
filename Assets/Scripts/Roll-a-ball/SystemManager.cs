@@ -64,7 +64,7 @@ public class SystemManager : MonoBehaviour {
           0.75f, eachBox.z_percent * MapSize);
         Instantiate(
           Resources.Load("Prefabs/Cube"), position, new Quaternion(),
-          pickUpHolder.transform);
+            pickUpHolder.transform);
       }
     } else {
       Debug.Log("Congratulation! you pass the game");
