@@ -18,10 +18,18 @@ public class PositionEditor : EditorWindow {
   private Vector2 levelViewVector = Vector2.zero;
   private Vector2 itemViewVector = Vector2.zero;
 
+  // root gui construct
   private void OnGUI() {
     var width = Screen.width;
     var height = Screen.height;
+
     GUI.Label(new Rect(5, 0, width, 20), "roll-a-ball position editor");
+    OnGUI_LevelPart(width, height);
+    OnGUI_ItemPart(width, height);
+  }
+
+  // level part gui
+  private void OnGUI_LevelPart(int width, int height) {
     GUI.BeginGroup(new Rect(0, 20, width / 3, height));
     GUI.Box(new Rect(0, 0, width / 3, height), "");
 
@@ -30,14 +38,14 @@ public class PositionEditor : EditorWindow {
       levelViewVector, new Rect(0, 0, width / 3, Math.Max(levelHeight, height)));
     levelIndex = GUI.SelectionGrid(new Rect(0, 0, width / 3, levelHeight), levelIndex,
       levelTitle, 1);
+
     GUI.EndScrollView();
     GUI.EndGroup();
-    OnGUI2();
   }
 
-  private void OnGUI2() {
-    var width = Screen.width;
-    var height = Screen.height;
+  private void OnGUI_ItemPart(int width, int height) {
+    // var width = Screen.width;
+    // var height = Screen.height;
     GUI.BeginGroup(new Rect(width / 3, 20, width / 3 * 2, height));
     var itemHeignt = itemTitle.Length * 25;
     itemViewVector = GUI.BeginScrollView(new Rect(0, 0, width / 3 * 2, height),
