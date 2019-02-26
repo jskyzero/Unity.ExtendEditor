@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraContriller : MonoBehaviour {
+public class CameraController : MonoBehaviour {
   public GameObject player;
   private Vector3 delta;
 
