@@ -20,29 +20,13 @@ public class SystemManager : MonoBehaviour {
   private const string LevelText = "Level: ";
 
   private void Start() {
-    levelData = new LevelData();
-    levelData.InitialLevels();
+    levelData = new LevelData(Application.dataPath);
 
     InitialLevelText();
     InitialScoreText();
     InitialPickUps();
 
-    StartAsync();
-  }
-
-  private async void StartAsync() {
-    // Test Linq
-    await Task.Run(() => {
-      Enumerable.Range(0, 100)
-        .Select(i => (new System.Random(i)).Next())
-        .Where(x => x > 0 && x % 2 == 0)
-        .Select(x => x % 10)
-        .OrderBy(x => x)
-        .ToList()
-        .ForEach(new Action<int>(x => {
-          //   Debug.Log(x.ToString() + " ");
-        }));
-    });
+    // StartAsync();
   }
 
   private void AddScore() {
@@ -56,10 +40,10 @@ public class SystemManager : MonoBehaviour {
     if (levelNumber < levelData.LevelSize) {
       var eachLevel = levelData[levelNumber];
       // set total number
-      totalNumber = eachLevel.Count;
+      totalNumber = eachLevel.eachLevelData.Count;
 
       for (int i = 0; i < totalNumber; i++) {
-        var eachBox = eachLevel[i];
+        var eachBox = eachLevel.eachLevelData[i];
         Vector3 position = new Vector3( eachBox.x_percent * MapSize, 
           0.75f, eachBox.z_percent * MapSize);
         Instantiate(
@@ -99,5 +83,20 @@ public class SystemManager : MonoBehaviour {
 
   private void UpdateLevelText() {
     Level.text = LevelText + (levelNumber + 1).ToString();
+  }
+
+  private async void StartAsync() {
+    // Test Linq
+    await Task.Run(() => {
+      Enumerable.Range(0, 100)
+        .Select(i => (new System.Random(i)).Next())
+        .Where(x => x > 0 && x % 2 == 0)
+        .Select(x => x % 10)
+        .OrderBy(x => x)
+        .ToList()
+        .ForEach(new Action<int>(x => {
+          //   Debug.Log(x.ToString() + " ");
+        }));
+    });
   }
 }
