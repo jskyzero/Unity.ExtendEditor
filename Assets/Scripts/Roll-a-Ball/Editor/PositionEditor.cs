@@ -20,20 +20,25 @@ public class PositionEditor : EditorWindow {
   private Vector2 levelViewVector = Vector2.zero;
   private Vector2 itemViewVector = Vector2.zero;
 
+  private PositionEditor() {}
+
   // root gui construct
   private void OnGUI() {
+    if (levelData == null) levelData = new LevelData(Application.dataPath);
+
     var width = Screen.width;
     var height = Screen.height;
 
     GUI.Label(new Rect(5, 0, width, 20), "roll-a-ball position editor");
-    GUI.BeginGroup(new Rect(0, 20, width / 3, height));
-    OnGUI_LevelPart(width / 3, height);
+    GUI.BeginGroup(new Rect(0, 20, width / 3, height - 20 - 20));
+    OnGUI_LevelPart(width / 3, height - 20 - 20);
     GUI.EndGroup();
 
-    GUI.BeginGroup(new Rect(width / 3, 20, width / 3 * 2, height));
-    OnGUI_ItemPart(width / 3 * 2, height);
+    GUI.BeginGroup(new Rect(width / 3, 20, width / 3 * 2, height - 20 - 20));
+    OnGUI_ItemPart(width / 3 * 2, height - 20 - 20);
     GUI.EndGroup();
 
+    if (levelData.NeedSave) SaveEditorConfig();
   }
 
   // level part gui
@@ -47,9 +52,9 @@ public class PositionEditor : EditorWindow {
       levelTitle, 1);
     GUI.EndScrollView();
 
-    // TODO: why this is height - 80
-    if (GUI.Button(new Rect(0, height - 80, width, 40), "Save")) {
-      SaveEditorConfig();
+
+    if (GUI.Button(new Rect(0, height - 40, width, 40), "Add")) {
+      // SaveEditorConfig();
     }
   }
 
@@ -63,8 +68,7 @@ public class PositionEditor : EditorWindow {
   }
 
   private void SaveEditorConfig() {
-    levelData = new LevelData(Application.dataPath);
-    levelData.SaveJson();
     Debug.Log("Config file saved");
+    levelData.SaveJson();
   }
 }

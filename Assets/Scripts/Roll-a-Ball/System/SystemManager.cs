@@ -21,7 +21,8 @@ public class SystemManager : MonoBehaviour {
 
   private void Start() {
     levelData = new LevelData(Application.dataPath);
-
+    
+    Debug.Log("Game Start");
     InitialLevelText();
     InitialScoreText();
     InitialPickUps();

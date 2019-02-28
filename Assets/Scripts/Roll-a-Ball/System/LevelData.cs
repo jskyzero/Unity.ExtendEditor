@@ -19,6 +19,7 @@ public class LevelData {
   // total level datas
   [SerializeField]
   private List<EachLevelData> levels;
+  private bool needSave;
   private string filePath = "/Config/config.json";
 
   // level size
@@ -27,6 +28,18 @@ public class LevelData {
   public EachLevelData this [int index] {
     get {
       return levels[index];
+    }
+    set {
+      levels[index] = value;
+    }
+  }
+  // drity
+  public bool NeedSave {
+    get {
+      return needSave;
+    }
+    private set {
+      needSave = value;
     }
   }
 
@@ -39,9 +52,9 @@ public class LevelData {
     levels = new List<EachLevelData>();
     System.Random rand = new System.Random();
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 3; i++) {
       EachLevelData eachLevel = new EachLevelData();
-      for (int j = 0; j < 2; j++) {
+      for (int j = 0; j < 4; j++) {
         BoxData newBox = new BoxData();
         newBox.x_percent = GetRandomPercent(rand);
         newBox.z_percent = GetRandomPercent(rand);
@@ -58,12 +71,13 @@ public class LevelData {
 
   public void LoadJson() {
     if (File.Exists(filePath)) {
-      this.levels = 
+      this.levels =
         JsonUtility.FromJson<LevelData>(File.ReadAllText(filePath)).levels;
     } else {
-      Debug.Log(String.Format("{0}: Not found config file at {1}",  
+      Debug.Log(String.Format("{0}: Not found config file at {1}",
         "Warnning", filePath));
       this.InitialLevels();
+      NeedSave = true;
     }
   }
 
@@ -72,5 +86,7 @@ public class LevelData {
     Debug.Log(dataAsJson);
     Directory.CreateDirectory(Path.GetDirectoryName(filePath));
     File.WriteAllText(filePath, dataAsJson);
+
+    NeedSave = false;
   }
 }
