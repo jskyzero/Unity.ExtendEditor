@@ -30,6 +30,7 @@ public class LevelData {
       return levels[index];
     }
     set {
+      this.needSave = true;
       levels[index] = value;
     }
   }
@@ -46,6 +47,11 @@ public class LevelData {
   public LevelData(string path) {
     this.filePath = path + filePath;
     LoadJson();
+  }
+
+  public void AddLevel() {
+    this.levels.Add(new EachLevelData());
+    this.NeedSave = true;
   }
 
   private void InitialLevels() {
@@ -73,6 +79,7 @@ public class LevelData {
     if (File.Exists(filePath)) {
       this.levels =
         JsonUtility.FromJson<LevelData>(File.ReadAllText(filePath)).levels;
+      Debug.Log(String.Format("Load config file at {0}", filePath));
     } else {
       Debug.Log(String.Format("{0}: Not found config file at {1}",
         "Warnning", filePath));
@@ -82,11 +89,11 @@ public class LevelData {
   }
 
   public void SaveJson() {
-    string dataAsJson = JsonUtility.ToJson(this);
-    Debug.Log(dataAsJson);
+    string dataAsJson = JsonUtility.ToJson(this, true);
     Directory.CreateDirectory(Path.GetDirectoryName(filePath));
     File.WriteAllText(filePath, dataAsJson);
-
     NeedSave = false;
+
+    Debug.Log(String.Format("Saved config file at {0}", filePath));
   }
 }

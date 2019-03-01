@@ -1,1 +1,94 @@
-{"levels":[{"eachLevelData":[{"x_percent":-0.8267362713813782,"z_percent":-0.8691867589950562},{"x_percent":0.8192501664161682,"z_percent":-0.14125791192054749}]}]}
+{
+    "levels": [
+        {
+            "eachLevelData": [
+                {
+                    "x_percent": 0.8297914266586304,
+                    "z_percent": -0.06134272366762161
+                },
+                {
+                    "x_percent": 0.24752914905548097,
+                    "z_percent": -0.8950362801551819
+                },
+                {
+                    "x_percent": 0.2924664318561554,
+                    "z_percent": 0.26948249340057375
+                },
+                {
+                    "x_percent": -0.49444639682769778,
+                    "z_percent": 0.7796321511268616
+                }
+            ]
+        },
+        {
+            "eachLevelData": [
+                {
+                    "x_percent": 0.6930760741233826,
+                    "z_percent": 0.1329917162656784
+                },
+                {
+                    "x_percent": -0.8559824824333191,
+                    "z_percent": 0.08324045687913895
+                },
+                {
+                    "x_percent": 0.674507200717926,
+                    "z_percent": 0.12248683720827103
+                },
+                {
+                    "x_percent": -0.3925139307975769,
+                    "z_percent": 0.07601068168878555
+                }
+            ]
+        },
+        {
+            "eachLevelData": [
+                {
+                    "x_percent": 0.645842432975769,
+                    "z_percent": 0.22505567967891694
+                },
+                {
+                    "x_percent": -0.3308078646659851,
+                    "z_percent": -0.7397716045379639
+                },
+                {
+                    "x_percent": -0.7677556872367859,
+                    "z_percent": -0.5047679543495178
+                },
+                {
+                    "x_percent": 0.35919463634490969,
+                    "z_percent": -0.43680769205093386
+                }
+            ]
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        },
+        {
+            "eachLevelData": []
+        }
+    ]
+}
