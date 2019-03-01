@@ -26,8 +26,8 @@ public class PositionEditor : EditorWindow {
   private void OnGUI() {
     if (levelData == null) levelData = new LevelData(Application.dataPath);
 
-    var width = Screen.width;
-    var height = Screen.height;
+    var width = Screen.width / (int)EditorGUIUtility.pixelsPerPoint;
+    var height = Screen.height / (int)EditorGUIUtility.pixelsPerPoint;
 
     GUI.Label(new Rect(5, 0, width, 20), "roll-a-ball position editor");
     GUI.BeginGroup(new Rect(0, 20, width / 3, height - 20 - 20));
