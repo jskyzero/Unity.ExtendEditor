@@ -67,13 +67,12 @@ public class PositionEditor : EditorWindow {
   private void OnGUI_ItemPart(int width, int height) {
     // m_Flags = (ExampleFlagsEnum)EditorGUI.EnumFlagsField(new Rect(5, 5, 300, 20), m_Flags);
 
-
-  //   var itemHeignt = itemTitle.Length * 25;
-  //   itemViewVector = GUI.BeginScrollView(new Rect(0, 0, width, height),
-  //     itemViewVector, new Rect(0, 0, width, Math.Min(itemHeignt, height)));
-  //   itemIndex = GUI.SelectionGrid(new Rect(0, 0, width, itemHeignt), itemIndex,
-  //     itemTitle, 1);
-  //   GUI.EndScrollView();
+    var itemHeignt = itemTitle.Length * 25;
+    itemViewVector = GUI.BeginScrollView(new Rect(0, 0, width, height),
+      itemViewVector, new Rect(0, 0, width, Math.Min(itemHeignt, height)));
+    itemIndex = GUI.SelectionGrid(new Rect(0, 0, width, itemHeignt), itemIndex,
+      itemTitle, 1);
+    GUI.EndScrollView();
   }
 
   private void SaveEditorConfig() {
