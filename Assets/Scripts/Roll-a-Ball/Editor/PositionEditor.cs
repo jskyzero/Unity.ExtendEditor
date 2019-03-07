@@ -15,14 +15,11 @@ public class PositionEditor : EditorWindow {
   // GUI variables
   private int levelIndex = 0;
   private int itemIndex = 0;
-  private string[] itemTitle = { "item 1", "item 2", "item 3", "item 3" };
 
   private Vector2 levelViewVector = Vector2.zero;
   private Vector2 itemViewVector = Vector2.zero;
 
   private PositionEditor() { }
-
-  public Rect windowRect = new Rect(20, 20, 120, 50);
 
   // root gui construct
   private void OnGUI() {
@@ -31,48 +28,40 @@ public class PositionEditor : EditorWindow {
     var width = Screen.width / (int) EditorGUIUtility.pixelsPerPoint;
     var height = Screen.height / (int) EditorGUIUtility.pixelsPerPoint;
 
-    GUI.Label(new Rect(5, 0, width, 20), "roll-a-ball position editor");
-    GUI.BeginGroup(new Rect(0, 20, width / 3, height - 20 - 20));
-    OnGUI_LevelPart(width / 3, height - 20 - 20);
-    GUI.EndGroup();
+    GUILayout.Label("roll-a-ball position editor");
 
-    GUI.BeginGroup(new Rect(width / 3, 20, width / 3 * 2, height - 20 - 20));
-    OnGUI_ItemPart(width / 3 * 2, height - 20 - 20);
-    GUI.EndGroup();
+    GUILayout.BeginHorizontal();
+    this.OnGUI_LevelPart();
+    this.OnGUI_ItemPart();
+    GUILayout.EndHorizontal();
 
     if (levelData.NeedSave) SaveEditorConfig();
   }
 
   // level part gui
-  private void OnGUI_LevelPart(int width, int height) {
-    GUI.Box(new Rect(0, 0, width, height), "");
-
-    var levelHeight = levelData.LevelSize * 40;
-    var levelTitle = Enumerable.Range(0, levelData.LevelSize)
+  private void OnGUI_LevelPart() {
+    var levelTitle = Enumerable
+      .Range(0, levelData.LevelCount)
       .Select(x => x.ToString()).ToArray();
 
-    levelViewVector = GUI.BeginScrollView(new Rect(0, 0, width, height - 40),
-      levelViewVector,
-      new Rect(0, 0, width, Math.Max(levelHeight, height - 40)));
-    levelIndex = GUI.SelectionGrid(new Rect(3, 3, width - 6, levelHeight - 6), 
-      levelIndex,
-      levelTitle, 1);
-    GUI.EndScrollView();
-
-    if (GUI.Button(new Rect(0, height - 40, width, 40), "Add")) {
+    levelViewVector = GUILayout.BeginScrollView(
+      levelViewVector, false, false,
+      GUILayout.MinWidth(300), GUILayout.MaxWidth(400));
+    levelIndex = GUILayout.SelectionGrid(
+      levelIndex, levelTitle, 1, GUILayout.Height(50 * levelTitle.Length));
+    GUILayout.FlexibleSpace();
+    if (GUILayout.Button("Add", GUILayout.Height(50))) {
       levelData.AddLevel();
     }
+    GUILayout.EndScrollView();
   }
 
-  private void OnGUI_ItemPart(int width, int height) {
-    // m_Flags = (ExampleFlagsEnum)EditorGUI.EnumFlagsField(new Rect(5, 5, 300, 20), m_Flags);
+  private void OnGUI_ItemPart() {
+    var eachLevelData = levelData[levelIndex];
+    itemViewVector = GUILayout.BeginScrollView(itemViewVector);
 
-    var itemHeignt = itemTitle.Length * 25;
-    itemViewVector = GUI.BeginScrollView(new Rect(0, 0, width, height),
-      itemViewVector, new Rect(0, 0, width, Math.Min(itemHeignt, height)));
-    itemIndex = GUI.SelectionGrid(new Rect(0, 0, width, itemHeignt), itemIndex,
-      itemTitle, 1);
-    GUI.EndScrollView();
+
+    GUILayout.EndScrollView();
   }
 
   private void SaveEditorConfig() {

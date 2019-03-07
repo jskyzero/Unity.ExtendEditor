@@ -23,7 +23,7 @@ public class LevelData {
   private string filePath = "/Config/config.json";
 
   // level size
-  public int LevelSize { get { return levels.Count; } }
+  public int LevelCount { get { return levels.Count; } }
   // each level data
   public EachLevelData this [int index] {
     get {

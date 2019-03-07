@@ -38,7 +38,7 @@ public class SystemManager : MonoBehaviour {
   }
 
   private void InitialPickUps() {
-    if (levelNumber < levelData.LevelSize) {
+    if (levelNumber < levelData.LevelCount) {
       var eachLevel = levelData[levelNumber];
       // set total number
       totalNumber = eachLevel.eachLevelData.Count;
