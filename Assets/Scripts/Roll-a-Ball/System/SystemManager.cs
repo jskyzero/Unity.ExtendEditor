@@ -41,10 +41,10 @@ public class SystemManager : MonoBehaviour {
     if (levelNumber < levelData.LevelCount) {
       var eachLevel = levelData[levelNumber];
       // set total number
-      totalNumber = eachLevel.eachLevelData.Count;
+      totalNumber = eachLevel.Count;
 
       for (int i = 0; i < totalNumber; i++) {
-        var eachBox = eachLevel.eachLevelData[i];
+        var eachBox = eachLevel[i];
         Vector3 position = new Vector3( eachBox.x_percent * MapSize, 
           0.75f, eachBox.z_percent * MapSize);
         Instantiate(

@@ -19,28 +19,17 @@ public class LevelData {
   // total level datas
   [SerializeField]
   private List<EachLevelData> levels;
-  private bool needSave;
   private string filePath = "/Config/config.json";
 
   // level size
   public int LevelCount { get { return levels.Count; } }
   // each level data
-  public EachLevelData this [int index] {
+  public List<BoxData> this [int index] {
     get {
-      return levels[index];
+      return levels[index].eachLevelData;
     }
     set {
-      this.needSave = true;
-      levels[index] = value;
-    }
-  }
-  // drity
-  public bool NeedSave {
-    get {
-      return needSave;
-    }
-    private set {
-      needSave = value;
+      levels[index].eachLevelData = value;
     }
   }
 
@@ -50,8 +39,17 @@ public class LevelData {
   }
 
   public void AddLevel() {
-    this.levels.Add(new EachLevelData());
-    this.NeedSave = true;
+    var newLevel = new EachLevelData();
+    newLevel.eachLevelData.Add(
+      new BoxData() {
+        x_percent = 0.0f,
+        z_percent = 0.0f,
+    });
+    this.levels.Add(newLevel);
+  }
+
+  public void DeleteLevel(int index) {
+    this.levels.RemoveAt(index);
   }
 
   private void InitialLevels() {
@@ -84,7 +82,6 @@ public class LevelData {
       Debug.Log(String.Format("{0}: Not found config file at {1}",
         "Warnning", filePath));
       this.InitialLevels();
-      NeedSave = true;
     }
   }
 
@@ -92,7 +89,6 @@ public class LevelData {
     string dataAsJson = JsonUtility.ToJson(this, true);
     Directory.CreateDirectory(Path.GetDirectoryName(filePath));
     File.WriteAllText(filePath, dataAsJson);
-    NeedSave = false;
 
     Debug.Log(String.Format("Saved config file at {0}", filePath));
   }
