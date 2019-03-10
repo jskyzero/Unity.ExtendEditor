@@ -14,18 +14,23 @@ public class PositionEditor : EditorWindow {
 
   // GUI variables
   private int levelIndex = 0;
-  private int itemIndex = 0;
   private bool needLogs = true;
 
   private Vector2 levelViewVector = Vector2.zero;
   private Vector2 itemViewVector = Vector2.zero;
 
-  private PositionEditor() { }
+  // private PositionEditor() { Debug.Log("Construct"); }
+  // ~PositionEditor() { Debug.Log("Release"); }
+
+  private void OnDestroy() {
+    levelData = null;
+    Debug.Log("Position Editor Destroyed");
+  }
 
   // root gui construct
   private void OnGUI() {
     // load data
-    if (levelData == null) levelData = new LevelData(Application.dataPath);
+    if (levelData == null) LoadEditorConfig();
     // gui variable
     // var width = Screen.width / (int) EditorGUIUtility.pixelsPerPoint;
     // var height = Screen.height / (int) EditorGUIUtility.pixelsPerPoint;
@@ -40,15 +45,20 @@ public class PositionEditor : EditorWindow {
   private void OnGUI_TitlePart() {
     GUILayout.BeginHorizontal(EditorStyles.toolbar);
 
-    if (GUILayout.Button("Save", EditorStyles.toolbarButton)) {
+    if (GUILayout.Button("Save Config", EditorStyles.toolbarButton)) {
          SaveEditorConfig();
         //  EditorGUIUtility.ExitGUI();
     }
     GUILayout.Space(5);
 
-    needLogs = GUILayout.Toggle(needLogs, "Show Logs", EditorStyles.toolbarButton);
+    needLogs = GUILayout.Toggle(needLogs, 
+      "Show Logs(useless now)", EditorStyles.toolbarButton);
 
     GUILayout.FlexibleSpace();
+
+    if (GUILayout.Button("Reload Config", EditorStyles.toolbarButton)) {
+      LoadEditorConfig();
+    }
     GUILayout.EndHorizontal();
   }
 
@@ -82,16 +92,27 @@ public class PositionEditor : EditorWindow {
     if (levelData.LevelCount == 0) return;
     var eachLevelData = levelData[levelIndex];
     itemViewVector = GUILayout.BeginScrollView(itemViewVector);
+    if (GUILayout.Button("Add")) {
+      eachLevelData.Add(new BoxData());
+    }
 
     for (int i = 0; i < eachLevelData.Count; i++) {
+      GUILayout.Space(5);
       GUILayout.Label("index: " + i.ToString());
       eachLevelData[i].x_percent = 
         EditorGUILayout.FloatField("x", eachLevelData[i].x_percent);
       eachLevelData[i].z_percent = 
         EditorGUILayout.FloatField("z", eachLevelData[i].z_percent);
+      if (GUILayout.Button("Delete")) {
+        eachLevelData.RemoveAt(i);
+      }
     }
 
     GUILayout.EndScrollView();
+  }
+
+  private void LoadEditorConfig() {
+    levelData = new LevelData(Application.dataPath);
   }
 
   private void SaveEditorConfig() {

@@ -51,6 +51,7 @@ public class SystemManager : MonoBehaviour {
           Resources.Load("Prefabs/Cube"), position, new Quaternion(),
             pickUpHolder.transform);
       }
+      CheckLevelFinish();
     } else {
       Debug.Log("Congratulation! you pass the game");
       Debug.Break();

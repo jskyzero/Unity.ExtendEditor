@@ -5,8 +5,8 @@ using UnityEngine;
 
 [Serializable]
 public class BoxData {
-  public float x_percent;
-  public float z_percent;
+  public float x_percent = 0.0f;
+  public float z_percent = 0.0f;
 }
 
 [Serializable]
@@ -40,11 +40,7 @@ public class LevelData {
 
   public void AddLevel() {
     var newLevel = new EachLevelData();
-    newLevel.eachLevelData.Add(
-      new BoxData() {
-        x_percent = 0.0f,
-        z_percent = 0.0f,
-    });
+    // newLevel.eachLevelData.Add(new BoxData() {});
     this.levels.Add(newLevel);
   }
 
@@ -89,7 +85,6 @@ public class LevelData {
     string dataAsJson = JsonUtility.ToJson(this, true);
     Directory.CreateDirectory(Path.GetDirectoryName(filePath));
     File.WriteAllText(filePath, dataAsJson);
-
     Debug.Log(String.Format("Saved config file at {0}", filePath));
   }
 }
