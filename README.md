@@ -5,19 +5,43 @@
 
 Unity編輯器擴展的實踐，給轉球小游戲加一個關卡編輯器。
 
-## 計劃表
+![](./Documents/img/preview.png)
 
-- [x] 制定計劃表。
-- [x] 瀏覽相關文檔，初步嘗試。
-- [x] 設計編輯器界面與游戲數據流。
-- [ ] 編碼實現，測試與總結。
+## 過程
 
-## 編輯器
-
-設計上大致如下：
+分析數據流，最初的設計如下：
 
 ![](./Documents/img/design_view.jpg)
 
-## 總結
+實際上發現想要的操作比設計上要多一些，所以額外加了一些按鈕，最後變成了上圖的樣子。
 
-## 參考
+## 關鍵代碼
+
+```csharp
+public class PositionEditor : EditorWindow {
+ [MenuItem("Jsky/Position Editor")]
+  private static void ShowWindow() {
+    EditorWindow.GetWindow(typeof(PositionEditor));
+  }
+
+  ...
+
+  // root gui construct
+  private void OnGUI() {
+    // load data
+    if (levelData == null) LoadEditorConfig();
+    // gui variable
+    // var width = Screen.width / (int) EditorGUIUtility.pixelsPerPoint;
+    // var height = Screen.height / (int) EditorGUIUtility.pixelsPerPoint;
+
+    OnGUI_TitlePart();
+    GUILayout.BeginHorizontal();
+    this.OnGUI_LevelPart();
+    this.OnGUI_ItemPart();
+    GUILayout.EndHorizontal();
+  }
+
+  ...
+
+}
+```
