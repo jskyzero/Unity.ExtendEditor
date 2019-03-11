@@ -69,7 +69,8 @@ public class PositionEditor : EditorWindow {
 
     levelViewVector = GUILayout.BeginScrollView(
       levelViewVector, false, false,
-      GUILayout.MinWidth(300), GUILayout.MaxWidth(400));
+      GUILayout.MinWidth(300 / (int) EditorGUIUtility.pixelsPerPoint), 
+      GUILayout.MaxWidth(400 / (int) EditorGUIUtility.pixelsPerPoint));
 
     levelIndex = GUILayout.SelectionGrid(
       levelIndex, levelTitle, 1);

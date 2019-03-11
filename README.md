@@ -1,11 +1,14 @@
 # extend-editor.basic
-`jskyzero` `2017/12/01`
+[![](https://img.shields.io/badge/Author-jskyzero-brightgreen.svg?style=flat)]()
+[![](https://img.shields.io/badge/Data-2019/12/01-brightgreen.svg?style=flat)]()
+[![](https://img.shields.io/badge/Unity-2018.1.5f1-blue.svg?style=flat)]()
 
 ## 概覽
 
-Unity編輯器擴展的實踐，給轉球小游戲加一個關卡編輯器。
+Unity編輯器擴展的實踐，給轉球小游戲加一個關卡編輯器，并讓修改可以及時預覽。
 
 ![](./Documents/img/preview.png)
+
 
 ## 過程
 
