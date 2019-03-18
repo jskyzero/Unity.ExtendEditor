@@ -19,9 +19,13 @@ public class SystemManager : MonoBehaviour {
   private const string ScoreText = "Score: ";
   private const string LevelText = "Level: ";
 
+  private void Reset() {
+    Debug.Log("Awake");
+  }
+
   private void Start() {
     levelData = new LevelData(Application.dataPath);
-    
+
     Debug.Log("Game Start");
     InitialLevelText();
     InitialScoreText();

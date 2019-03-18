@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PositionEditor : EditorWindow {
 
@@ -15,6 +16,7 @@ public class PositionEditor : EditorWindow {
   // GUI variables
   private int levelIndex = 0;
   private bool needLogs = true;
+  private bool needPreview = true;
 
   private Vector2 levelViewVector = Vector2.zero;
   private Vector2 itemViewVector = Vector2.zero;
@@ -40,6 +42,8 @@ public class PositionEditor : EditorWindow {
     this.OnGUI_LevelPart();
     this.OnGUI_ItemPart();
     GUILayout.EndHorizontal();
+
+    PriviewInScene();
   }
 
   private void OnGUI_TitlePart() {
@@ -53,6 +57,9 @@ public class PositionEditor : EditorWindow {
 
     needLogs = GUILayout.Toggle(needLogs, 
       "Show Logs(useless now)", EditorStyles.toolbarButton);
+    GUILayout.Space(5);
+    needPreview = GUILayout.Toggle(needPreview,
+      "Preview", EditorStyles.toolbarButton);
 
     GUILayout.FlexibleSpace();
 
@@ -110,6 +117,24 @@ public class PositionEditor : EditorWindow {
     }
 
     GUILayout.EndScrollView();
+  }
+
+  private void PriviewInScene() {
+    if (needPreview) {
+      GameObject preview = null;
+      try {
+        Scene scene = SceneManager.GetActiveScene();
+        preview = scene.GetRootGameObjects().First(
+          (obj) => obj.name == "Preview");
+      } catch (InvalidOperationException) {
+        preview = new GameObject() { name = "Preview" };
+      }
+
+      // preview.transform.parent = null;
+      // foreach(var obj in objList) {
+      //   Debug.Log(obj.name);
+      // }
+    }
   }
 
   private void LoadEditorConfig() {
