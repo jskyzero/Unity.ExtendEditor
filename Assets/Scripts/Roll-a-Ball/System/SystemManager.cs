@@ -15,9 +15,11 @@ public class SystemManager : MonoBehaviour {
   private int pickUpNumber = 0;
   private int totalNumber = 0;
   private int levelNumber = 0;
-  private const float MapSize = 4.0f;
+  private const float mapSize = 4.0f;
   private const string ScoreText = "Score: ";
   private const string LevelText = "Level: ";
+
+  public float MapSize { get { return mapSize; } }
 
   private void Reset() {
     Debug.Log("Awake");
@@ -49,11 +51,11 @@ public class SystemManager : MonoBehaviour {
 
       for (int i = 0; i < totalNumber; i++) {
         var eachBox = eachLevel[i];
-        Vector3 position = new Vector3( eachBox.x_percent * MapSize, 
-          0.75f, eachBox.z_percent * MapSize);
+        Vector3 position = new Vector3(eachBox.x_percent * mapSize,
+          0.75f, eachBox.z_percent * mapSize);
         Instantiate(
           Resources.Load("Prefabs/Cube"), position, new Quaternion(),
-            pickUpHolder.transform);
+          pickUpHolder.transform);
       }
       CheckLevelFinish();
     } else {

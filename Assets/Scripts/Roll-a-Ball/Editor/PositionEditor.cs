@@ -50,12 +50,12 @@ public class PositionEditor : EditorWindow {
     GUILayout.BeginHorizontal(EditorStyles.toolbar);
 
     if (GUILayout.Button("Save Config", EditorStyles.toolbarButton)) {
-         SaveEditorConfig();
-        //  EditorGUIUtility.ExitGUI();
+      SaveEditorConfig();
+      //  EditorGUIUtility.ExitGUI();
     }
     GUILayout.Space(5);
 
-    needLogs = GUILayout.Toggle(needLogs, 
+    needLogs = GUILayout.Toggle(needLogs,
       "Show Logs(useless now)", EditorStyles.toolbarButton);
     GUILayout.Space(5);
     needPreview = GUILayout.Toggle(needPreview,
@@ -76,7 +76,7 @@ public class PositionEditor : EditorWindow {
 
     levelViewVector = GUILayout.BeginScrollView(
       levelViewVector, false, false,
-      GUILayout.MinWidth(300 / (int) EditorGUIUtility.pixelsPerPoint), 
+      GUILayout.MinWidth(300 / (int) EditorGUIUtility.pixelsPerPoint),
       GUILayout.MaxWidth(400 / (int) EditorGUIUtility.pixelsPerPoint));
 
     levelIndex = GUILayout.SelectionGrid(
@@ -107,9 +107,9 @@ public class PositionEditor : EditorWindow {
     for (int i = 0; i < eachLevelData.Count; i++) {
       GUILayout.Space(5);
       GUILayout.Label("index: " + i.ToString());
-      eachLevelData[i].x_percent = 
+      eachLevelData[i].x_percent =
         EditorGUILayout.FloatField("x", eachLevelData[i].x_percent);
-      eachLevelData[i].z_percent = 
+      eachLevelData[i].z_percent =
         EditorGUILayout.FloatField("z", eachLevelData[i].z_percent);
       if (GUILayout.Button("Delete")) {
         eachLevelData.RemoveAt(i);
@@ -120,20 +120,29 @@ public class PositionEditor : EditorWindow {
   }
 
   private void PriviewInScene() {
-    if (needPreview) {
-      GameObject preview = null;
-      try {
-        Scene scene = SceneManager.GetActiveScene();
-        preview = scene.GetRootGameObjects().First(
-          (obj) => obj.name == "Preview");
-      } catch (InvalidOperationException) {
-        preview = new GameObject() { name = "Preview" };
-      }
+    if (!needPreview) return;
 
-      // preview.transform.parent = null;
-      // foreach(var obj in objList) {
-      //   Debug.Log(obj.name);
-      // }
+    GameObject previewHolder = null;
+    try {
+      Scene scene = SceneManager.GetActiveScene();
+      previewHolder = scene.GetRootGameObjects().First(
+        (obj) => obj.name == "System");
+    } catch (InvalidOperationException) {
+      Debug.LogError("Can't Find System GameObeject");
+    }
+
+    if (levelData.LevelCount == 0) return;
+    var eachLevelData = levelData[levelIndex];
+    for (int i = 0; i < previewHolder.transform.childCount; i++) {
+      DestroyImmediate(previewHolder.transform.GetChild(i).gameObject);
+    }
+    for (int i = 0; i < eachLevelData.Count; i++) {
+      var mapSize = previewHolder.GetComponent<SystemManager>().MapSize;
+      Vector3 position = new Vector3(eachLevelData[i].x_percent * mapSize,
+        0.75f, eachLevelData[i].z_percent * mapSize);
+      var previewObj = Instantiate(
+        Resources.Load("Prefabs/Cube"), position, new Quaternion(),
+        previewHolder.transform);
     }
   }
 
