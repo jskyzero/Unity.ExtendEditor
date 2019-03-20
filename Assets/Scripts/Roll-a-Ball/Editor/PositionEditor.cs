@@ -103,7 +103,6 @@ public class PositionEditor : EditorWindow {
     if (GUILayout.Button("Add")) {
       eachLevelData.Add(new BoxData());
     }
-
     for (int i = 0; i < eachLevelData.Count; i++) {
       GUILayout.Space(5);
       GUILayout.Label("index: " + i.ToString());
@@ -120,29 +119,58 @@ public class PositionEditor : EditorWindow {
   }
 
   private void PriviewInScene() {
-    if (!needPreview) return;
-
-    GameObject previewHolder = null;
+    GameObject systemObj = null;
     try {
-      Scene scene = SceneManager.GetActiveScene();
-      previewHolder = scene.GetRootGameObjects().First(
+      // find system
+      var scene = SceneManager.GetActiveScene();
+      systemObj = scene.GetRootGameObjects().First(
         (obj) => obj.name == "System");
     } catch (InvalidOperationException) {
+      // log and return
       Debug.LogError("Can't Find System GameObeject");
+      return;
     }
+    // find or add holder
+    GameObject previewHolder = null;
+    var previewHolderTransform = systemObj.transform.Find("PreviewHolder");
+    if (previewHolderTransform == null) {
+      previewHolder = new GameObject() { name = "PreviewHolder" };
+      previewHolderTransform = previewHolder.transform;
+      previewHolder.transform.parent = systemObj.transform;
+    } else {
+      previewHolder = previewHolderTransform.gameObject;
+    }
+    previewHolder.SetActive(needPreview);
+    if (!needPreview) return;
 
     if (levelData.LevelCount == 0) return;
     var eachLevelData = levelData[levelIndex];
-    for (int i = 0; i < previewHolder.transform.childCount; i++) {
-      DestroyImmediate(previewHolder.transform.GetChild(i).gameObject);
+    var mapSize = systemObj.GetComponent<SystemManager>().MapSize;
+    // travel and add all
+    for (int i = 0; i < previewHolderTransform.childCount; i++) {
+      if (i < eachLevelData.Count) {
+        var name = "Index_" + i.ToString();
+        previewHolderTransform.GetChild(i).gameObject.name = name;
+      } else {
+        DestroyImmediate(previewHolderTransform.GetChild(i).gameObject);
+      }
     }
+
     for (int i = 0; i < eachLevelData.Count; i++) {
-      var mapSize = previewHolder.GetComponent<SystemManager>().MapSize;
-      Vector3 position = new Vector3(eachLevelData[i].x_percent * mapSize,
-        0.75f, eachLevelData[i].z_percent * mapSize);
-      var previewObj = Instantiate(
-        Resources.Load("Prefabs/Cube"), position, new Quaternion(),
-        previewHolder.transform);
+      var name = "Index_" + i.ToString();
+      Vector3 position = new Vector3(
+        eachLevelData[i].x_percent * mapSize, 0.75f,
+        eachLevelData[i].z_percent * mapSize);
+      // try find
+      var eachTransform = previewHolderTransform.Find(name);
+      if (eachTransform == null) {
+        var eachObj = Instantiate(
+          Resources.Load("Prefabs/Cube"), position, new Quaternion(),
+          previewHolderTransform);
+        eachObj.name = name;
+      } else {
+        eachTransform.position = position;
+      }
     }
   }
 
