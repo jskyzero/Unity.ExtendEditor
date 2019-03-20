@@ -7,7 +7,12 @@
 
 Unity編輯器擴展的實踐，給轉球小游戲加一個關卡編輯器，并讓修改可以及時預覽。
 
-![](./Documents/img/preview.png)
+<!-- ![](./Documents/img/preview.1.png) -->
+
+> 现在，你可以勾选预览选项并拖动数值实时在关卡种预览修改。
+
+![](./Documents/img/preview.2.jpg)
+
 
 
 ## 過程
