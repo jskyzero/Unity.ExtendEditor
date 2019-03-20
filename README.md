@@ -1,4 +1,4 @@
-# extend-editor.basic
+# extend-editor.superior
 [![](https://img.shields.io/badge/Author-jskyzero-brightgreen.svg?style=flat)]()
 [![](https://img.shields.io/badge/Data-2019/12/01-brightgreen.svg?style=flat)]()
 [![](https://img.shields.io/badge/Unity-2018.1.5f1-blue.svg?style=flat)]()
@@ -9,7 +9,7 @@ Unity編輯器擴展的實踐，給轉球小游戲加一個關卡編輯器，并
 
 <!-- ![](./Documents/img/preview.1.png) -->
 
-> 现在，你可以勾选预览选项并拖动数值实时在关卡种预览修改。
+> 现在，你可以勾选预览选项并拖动数值实时在关卡中预览修改。
 
 ![](./Documents/img/preview.2.jpg)
 
