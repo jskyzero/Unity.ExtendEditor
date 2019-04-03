@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  jumpForce: 100
   system: {fileID: 1307677649}
   rb: {fileID: 0}
 --- !u!54 &1769902376
@@ -1474,7 +1475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633d07ff51b5107438f601518d0f15e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAtPoint: {x: 12.34, y: -3.4, z: 1.44}
 --- !u!114 &2138880248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,27 +1486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f997d81e67cd3c64eba5e6afb6d68e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myFloat: 0.56
-  potionResult:
-    name: 
-    amount: 1
-    unit: 0
-  potionIngredients:
-  - name: 
-    amount: 0
-    unit: 0
-  - name: 
-    amount: 0
-    unit: 0
-  - name: 
-    amount: 0
-    unit: 0
-  - name: 
-    amount: 0
-    unit: 0
-  - name: 
-    amount: 0
-    unit: 0
 --- !u!4 &2138880249
 Transform:
   m_ObjectHideFlags: 0
