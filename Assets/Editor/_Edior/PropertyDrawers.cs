@@ -3,7 +3,6 @@ using UnityEditor;
 using UnityEngine;
 
 public class PropertyDrawers : MonoBehaviour {
-
     public enum IngredientUnit { Spoon, Cup, Bowl, Piece }
 
     // custion serializable class
@@ -69,7 +68,6 @@ public class PropertyDrawers : MonoBehaviour {
                 EditorGUI.Slider(position, property, (int) range.min, (int)range.max, label);
             else
                 EditorGUI.LabelField(position, label.text, "Use MyRange with float or int.");
-
         }
     }
 

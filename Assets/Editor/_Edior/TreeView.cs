@@ -4,7 +4,6 @@ using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 class TreeView : EditorWindow {
-
     // [UnityEngine.SerializeField]
     // // The TreeElement data class is extended to hold extra data, which you show and edit in the
     // // front-end TreeView.
@@ -92,5 +91,4 @@ class TreeView : EditorWindow {
         window.titleContent = new UnityEngine.GUIContent("Tree View");
         window.Show();
     }
-
 }

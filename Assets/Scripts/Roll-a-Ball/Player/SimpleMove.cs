@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleMove : MonoBehaviour {
-
   public float speed;
   public GameObject system;
   [SerializeField]
@@ -29,5 +28,4 @@ public class SimpleMove : MonoBehaviour {
 
     system.SendMessage("AddScore", null);
   }
-
 }

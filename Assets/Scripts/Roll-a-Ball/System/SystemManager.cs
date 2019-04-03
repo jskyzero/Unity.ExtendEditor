@@ -62,7 +62,6 @@ public class SystemManager : MonoBehaviour {
       Debug.Log("Congratulation! you pass the game");
       Debug.Break();
     }
-
   }
 
   private void CheckLevelFinish() {

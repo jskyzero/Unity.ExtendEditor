@@ -2,6 +2,7 @@
 [![](https://img.shields.io/badge/Author-jskyzero-brightgreen.svg?style=flat)]()
 [![](https://img.shields.io/badge/Data-2019/12/01-brightgreen.svg?style=flat)]()
 [![](https://img.shields.io/badge/Unity-2018.1.5f1-blue.svg?style=flat)]()
+[![CodeFactor](https://www.codefactor.io/repository/github/moons-project/unity.extendeditor/badge)](https://www.codefactor.io/repository/github/moons-project/unity.extendeditor)
 
 ## 概覽
 
