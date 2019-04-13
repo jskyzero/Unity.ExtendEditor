@@ -1,13 +1,40 @@
 {
     "levels": [
         {
-            "eachLevelData": []
+            "eachLevelData": [
+                {
+                    "x_percent": -0.3100000023841858,
+                    "z_percent": -0.3700000047683716
+                }
+            ]
         },
         {
-            "eachLevelData": []
+            "eachLevelData": [
+                {
+                    "x_percent": 0.6000000238418579,
+                    "z_percent": 0.0
+                },
+                {
+                    "x_percent": 0.7400000095367432,
+                    "z_percent": 0.5400000214576721
+                }
+            ]
         },
         {
-            "eachLevelData": []
+            "eachLevelData": [
+                {
+                    "x_percent": -0.550000011920929,
+                    "z_percent": 0.550000011920929
+                },
+                {
+                    "x_percent": -0.5600000023841858,
+                    "z_percent": 0.0
+                },
+                {
+                    "x_percent": -0.7300000190734863,
+                    "z_percent": -0.5299999713897705
+                }
+            ]
         }
     ]
 }

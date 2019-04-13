@@ -122,7 +122,7 @@ public class PositionEditor : EditorWindow {
       // find system
       var scene = SceneManager.GetActiveScene();
       systemObj = scene.GetRootGameObjects().First(
-        (obj) => obj.name == "System");
+        (obj) => obj.name == "System.Logic");
     } catch (InvalidOperationException) {
       // log and return
       Debug.LogError("Can't Find System GameObeject");
