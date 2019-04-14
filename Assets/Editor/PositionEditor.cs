@@ -27,21 +27,21 @@ public class PositionEditor : EditorWindow {
     Debug.Log("Position Editor Destroyed");
   }
 
-  // root gui construct
-  private void OnGUI() {
-    // load data
-    if (levelData == null) LoadEditorConfig();
     // gui variable
     // var width = Screen.width / (int) EditorGUIUtility.pixelsPerPoint;
     // var height = Screen.height / (int) EditorGUIUtility.pixelsPerPoint;
 
-    OnGUI_TitlePart();
-    GUILayout.BeginHorizontal();
-    this.OnGUI_LevelPart();
-    this.OnGUI_ItemPart();
-    GUILayout.EndHorizontal();
+  // root gui construct
+  private void OnGUI() {
+    if (levelData == null) LoadEditorConfig(); // load data
 
-    PriviewInScene();
+    OnGUI_TitlePart();                  // 标题部分
+    GUILayout.BeginHorizontal();        // 横向布局
+    this.OnGUI_LevelPart();               // 关卡部分UI
+    this.OnGUI_ItemPart();                // 收集物部分UI
+    GUILayout.EndHorizontal();          // 完成横向布局
+
+    PriviewInScene();                   // 在场景中及时预览
   }
 
   private void OnGUI_TitlePart() {
@@ -118,8 +118,8 @@ public class PositionEditor : EditorWindow {
 
   private void PriviewInScene() {
     GameObject systemObj = null;
+    // find system
     try {
-      // find system
       var scene = SceneManager.GetActiveScene();
       systemObj = scene.GetRootGameObjects().First(
         (obj) => obj.name == "System.Logic");
@@ -130,6 +130,7 @@ public class PositionEditor : EditorWindow {
     }
     // find or add holder
     GameObject previewHolder = null;
+     
     var previewHolderTransform = systemObj.transform.Find("PreviewHolder");
     if (previewHolderTransform == null) {
       previewHolder = new GameObject() { name = "PreviewHolder" };
