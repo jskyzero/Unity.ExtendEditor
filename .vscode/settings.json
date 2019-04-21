@@ -2,6 +2,7 @@
     "files.exclude":
     {
         "**/*.meta":true,
+        "**/*.csproj":true,
         "build/":true,
         "Build/":true,
         "Library/":true,

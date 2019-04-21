@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimpleMove : MonoBehaviour {
   public float speed = 2.0f;
-  public float jumpForce = 200.0f;
+  // public float jumpForce = 200.0f;
   public GameObject system;
   [SerializeField]
   private Rigidbody rb;
@@ -20,15 +20,15 @@ public class SimpleMove : MonoBehaviour {
     Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
     Move(movement);
 
-    if (Input.GetKeyDown(KeyCode.Space)) {
-      Jump();
-    }
+    // if (Input.GetKeyDown(KeyCode.Space)) {
+    //   Jump();
+    // }
   }
 
-  private void Jump() {
-    Vector3 up = transform.TransformDirection(Vector3.up);
-    rb.AddForce(up * jumpForce);
-  }
+  // private void Jump() {
+  //   Vector3 up = transform.TransformDirection(Vector3.up);
+  //   rb.AddForce(up * jumpForce);
+  // }
 
   private void Move(Vector3 movement) {
     rb.AddForce(movement * speed);
