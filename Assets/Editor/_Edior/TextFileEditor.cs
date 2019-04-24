@@ -34,37 +34,38 @@ public class TextFileEditor : EditorWindow {
 
 [CustomEditor(typeof(TextAsset), true)]
 public class TextFileCustomEditor : Editor {
+
+  private string textString = string.Empty;
   private string filePath => AssetDatabase.GetAssetPath(target);
-  private TextAsset textFile => Resources.Load(filePath) as TextAsset;
-  private string textString;
+  private string textAssetString => (target as TextAsset).text;
+  private string loadString => File.ReadAllText(filePath);
+  private TextAsset loadTextFile => Resources.Load(filePath) as TextAsset;
 
   // constructor
   TextFileCustomEditor() : base() {
     Debug.Log("TextFileCustomEditor Construct");
 
-    // textString = File.ReadAllText(filePath);
-    // Debug.Log(filePath);
+    // textString = ;
     // TextAsset textFile = Resources.Load(filePath) as TextAsset;
     // Debug.Log(textFile);
   }
 
   // on gui
   public override void OnInspectorGUI() {
-
-
-    // if (!useDefaultGUI) {
     bool enabled = GUI.enabled;
     GUI.enabled = true;
-    showTextFileGUI();
+    OnGUI_Main();
     GUI.enabled = enabled;
-    // } else {
-    //   useDefaultGUI = EditorGUILayout.Toggle(useDefaultGUI);
-    //   // origin base GUI version
-    //   // base.OnInspectorGUI();
-    // }
   }
 
-  private void showTextFileGUI() {
-    textString = EditorGUILayout.TextArea((target as TextAsset).text);
+  private void OnGUI_Main() {
+    if (textString.Equals(string.Empty)) textString = textAssetString;
+    textString = EditorGUILayout.TextArea(textString);
   }
+
+  private void OnGUI_Header() {
+
+  }
+
+  // private void 
 }
