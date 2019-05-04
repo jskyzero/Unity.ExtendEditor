@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -42,11 +43,13 @@ public class TextFileCustomEditor : Editor {
   private string loadString => File.ReadAllText(filePath);
   private TextAsset loadTextFile => Resources.Load(filePath) as TextAsset;
 
-  private static Dictionary<string, string> UIStringDict =
-    new Dictionary<string, string> { { "SaveButtonName", "保存文件" },
-      { "ReloadButtonName", "重新加载" },
-      { "NeedStyleButtonName", "格式化文档" },
-    };
+  private class UIStringDict {
+    public string SaveButtonName = "保存文件";
+    public string ReloadButtonName = "重新加载";
+    public string NeedStyleButtonName = "格式化文档";
+  }
+
+  private static UIStringDict kUIStringDict = new UIStringDict();
 
   // constructor
   TextFileCustomEditor() : base() {
@@ -55,10 +58,15 @@ public class TextFileCustomEditor : Editor {
 
   // on gui
   public override void OnInspectorGUI() {
-    bool enabled = GUI.enabled;
-    GUI.enabled = true;
-    OnGUI_Main();
-    GUI.enabled = enabled;
+    // use a action
+    Action<Action> enable = (action) => {
+      bool enabled = GUI.enabled;
+      GUI.enabled = true; 
+      action.Invoke();
+      GUI.enabled = enabled;
+    };
+    // invoke with main gui
+    enable.Invoke(OnGUI_Main);
   }
 
   private void OnGUI_Main() {
@@ -74,14 +82,20 @@ public class TextFileCustomEditor : Editor {
   private void OnGUI_TitlePart() {
     GUILayout.BeginHorizontal(EditorStyles.toolbar);
 
-    if (GUILayout.Button(UIStringDict["SaveButtonName"], EditorStyles.toolbarButton)) { }
+    if (GUILayout.Button(kUIStringDict.SaveButtonName, EditorStyles.toolbarButton)) {
+      SaveFile();
+    }
     GUILayout.Space(5);
-    if (GUILayout.Button("重新加载", EditorStyles.toolbarButton)) { }
+    if (GUILayout.Button(kUIStringDict.ReloadButtonName, EditorStyles.toolbarButton)) { }
     GUILayout.FlexibleSpace();
     GUILayout.Toggle(true,
       "Preview", EditorStyles.toolbarButton);
 
     GUILayout.EndHorizontal();
+  }
+
+  private void ReloadFile() {
+    textString = loadString;
   }
 
   private void SaveFile() {
