@@ -55,7 +55,7 @@ public class PositionEditor : EditorWindow {
 ```
 
 
-## TODO
+<!-- ## TODO
 
 1. 更加複雜的關卡要素。
   + 消除方式變更，增加控制維度小球環繞遠近。（同時適應移動端增加搖桿）
@@ -66,4 +66,4 @@ public class PositionEditor : EditorWindow {
   + 增加關卡元素
     + 音樂
     + 提示
-2. 與之適應的關卡編輯器。
+2. 與之適應的關卡編輯器。 -->
