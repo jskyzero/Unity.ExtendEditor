@@ -54,8 +54,8 @@ public class TextFileCustomEditor : Editor {
   private class UIStringDict {
     public string SaveButtonName = "保存文件";
     public string ReloadButtonName = "重新加载";
-    public string NeedStyleButtonName = "格式化文档";
-    public string SaveWithoutStyle = "无格式保存";
+    // public string NeedStyleButtonName = "格式化文档";
+    // public string SaveWithoutStyle = "无格式保存";
   }
 
   private static UIStringDict kUIStringDict = new UIStringDict();
@@ -98,19 +98,19 @@ public class TextFileCustomEditor : Editor {
         EditorStyles.toolbarButton)) {
       ReloadFile();
     }
-    GUILayout.Space(5);
-    if (GUILayout.Button("TEST Format",
-        EditorStyles.toolbarButton)) {
-      FormatString("");
-    }
+    // GUILayout.Space(5);
+    // if (GUILayout.Button("TEST Format",
+    //     EditorStyles.toolbarButton)) {
+    //   FormatString("");
+    // }
     GUILayout.FlexibleSpace();
-    needStyle = GUILayout.Toggle(needStyle,
-      kUIStringDict.NeedStyleButtonName, EditorStyles.toolbarButton);
-    if (needStyle) {
-      GUILayout.Space(5);
-      saveWithoutStyle = GUILayout.Toggle(saveWithoutStyle,
-        kUIStringDict.SaveWithoutStyle, EditorStyles.toolbarButton);
-    }
+    // needStyle = GUILayout.Toggle(needStyle,
+    //   kUIStringDict.NeedStyleButtonName, EditorStyles.toolbarButton);
+    // if (needStyle) {
+    //   GUILayout.Space(5);
+    //   saveWithoutStyle = GUILayout.Toggle(saveWithoutStyle,
+    //     kUIStringDict.SaveWithoutStyle, EditorStyles.toolbarButton);
+    // }
 
     GUILayout.EndHorizontal();
   }
