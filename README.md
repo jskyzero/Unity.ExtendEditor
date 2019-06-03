@@ -1,8 +1,9 @@
-# extend-editor.basic
+# extend-editor.superior
 [![](https://img.shields.io/badge/Author-jskyzero-brightgreen.svg?style=flat)]()
 [![](https://img.shields.io/badge/Data-2019/12/01-brightgreen.svg?style=flat)]()
 [![](https://img.shields.io/badge/Unity-2019.1.0f2-blue.svg?style=flat)]()
 [![CodeFactor](https://www.codefactor.io/repository/github/moons-project/unity.extendeditor/badge)](https://www.codefactor.io/repository/github/moons-project/unity.extendeditor)
+
 
 ## 概覽
 
@@ -10,7 +11,7 @@ Unity編輯器擴展的實踐，給轉球小游戲加一個關卡編輯器，并
 
 <!-- ![](./Documents/img/preview.1.png) -->
 
-> 现在，你可以勾选预览选项并拖动数值实时在关卡种预览修改。
+> 现在，你可以勾选预览选项并拖动数值实时在关卡中预览修改。
 
 ![](./Documents/img/preview.2.jpg)
 
@@ -53,7 +54,6 @@ public class PositionEditor : EditorWindow {
 
 }
 ```
-
 
 <!-- ## TODO
 
