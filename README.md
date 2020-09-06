@@ -1,8 +1,8 @@
 # extend-editor.superior
 [![](https://img.shields.io/badge/Author-jskyzero-brightgreen.svg?style=flat)]()
 [![](https://img.shields.io/badge/Data-2019/12/01-brightgreen.svg?style=flat)]()
-[![](https://img.shields.io/badge/Unity-2019.1.0f2-blue.svg?style=flat)]()
-[![CodeFactor](https://www.codefactor.io/repository/github/moons-project/unity.extendeditor/badge)](https://www.codefactor.io/repository/github/moons-project/unity.extendeditor)
+[![](https://img.shields.io/badge/Unity-2019.4.8f1-blue.svg?style=flat)]()
+[![CodeFactor](https://www.codefactor.io/repository/github/jskyzero/unity.extendeditor/badge)](https://www.codefactor.io/repository/github/jskyzero/unity.extendeditor)
 
 
 ## 概覽
