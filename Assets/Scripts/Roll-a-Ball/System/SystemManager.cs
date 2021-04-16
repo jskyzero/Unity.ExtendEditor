@@ -5,11 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SystemManager : MonoBehaviour {
   public GameObject pickUpHolder;
-  public Text Score;
-  public Text Level;
+  public TextMeshProUGUI Score;
+  public TextMeshProUGUI Level;
   public LevelData levelData;
 
   private int pickUpNumber = 0;
