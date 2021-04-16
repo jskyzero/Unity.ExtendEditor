@@ -84,7 +84,7 @@ class TreeView : EditorWindow {
     }
 
     // add menu named "Tree View" to the jsky menu
-    [UnityEditor.MenuItem("Jsky/Tree View")]
+    [UnityEditor.MenuItem("Tools/Jsky/Tree View")]
     static void ShowWindow() {
         // Get existing open window or if none make a new one:
         var window = GetWindow<TreeView>();

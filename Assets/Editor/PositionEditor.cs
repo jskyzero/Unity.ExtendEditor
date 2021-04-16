@@ -14,7 +14,7 @@ public class PositionEditor : EditorWindow {
   private Vector2 levelViewVector = Vector2.zero;
   private Vector2 itemViewVector = Vector2.zero;
 
-  [MenuItem("Jsky/Position Editor")]
+  [MenuItem("Tools/Jsky/Position Editor")]
   private static void ShowWindow() {
     EditorWindow.GetWindow(typeof(PositionEditor));
   }

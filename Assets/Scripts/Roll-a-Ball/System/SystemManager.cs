@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Michsky.UI.ModernUIPack;
 
 public class SystemManager : MonoBehaviour {
   public GameObject pickUpHolder;
   public TextMeshProUGUI Score;
   public TextMeshProUGUI Level;
   public LevelData levelData;
+  public NotificationManager myNotification;
 
   private int pickUpNumber = 0;
   private int totalNumber = 0;
@@ -23,13 +25,20 @@ public class SystemManager : MonoBehaviour {
   public float MapSize { get { return mapSize; } }
 
   private void Reset() {
+    Debug.Log("Reset");
+  }
+
+  private void Awake() {
     Debug.Log("Awake");
   }
 
   private void Start() {
     levelData = new LevelData(Application.dataPath);
+    notification("Start", "Enjoy The Game");
+    notification("Start", "Enjoy The Game");
 
-    Debug.Log("Game Start");
+
+   // myNotification.CloseWindow(); // Close notification
     InitialLevelText();
     InitialScoreText();
     InitialPickUps();
@@ -39,7 +48,7 @@ public class SystemManager : MonoBehaviour {
 
   private void AddScore() {
     pickUpNumber += 1;
-    Debug.Log(pickUpNumber);
+    notification("Great", $"you picked {pickUpNumber}");
     UpdateScoreText();
     CheckLevelFinish();
   }
@@ -60,19 +69,32 @@ public class SystemManager : MonoBehaviour {
       }
       CheckLevelFinish();
     } else {
-      Debug.Log("Congratulation! you pass the game");
-      Debug.Break();
+      notification("Congratulation!", $"you pass the game");
+      // Debug.Break();
     }
   }
 
   private void CheckLevelFinish() {
     if (pickUpNumber == totalNumber) {
-      Debug.Log("Level Up");
+      notification("Level Up!", $"Congratulation");
+
       levelNumber += 1;
       UpdateLevelText();
       InitialScoreText();
       InitialPickUps();
     }
+  }
+
+  private void notification(string title, string content) {
+    var newNotification = Instantiate(myNotification);
+    newNotification.transform.position = myNotification.transform.position;
+    newNotification.transform.SetParent(myNotification.transform.parent);
+    // newNotification.transform.parent = myNotification.transform.parent;
+    newNotification.title = title;
+    newNotification.description = content;
+    newNotification.useStacking = true;
+    newNotification.UpdateUI(); // Update UI
+    newNotification.OpenNotification(); // Open notification
   }
 
   private void InitialScoreText() {
