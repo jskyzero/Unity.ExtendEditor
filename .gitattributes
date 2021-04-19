@@ -4,3 +4,5 @@
 *.meta text eol=lf
 *.prefab text eol=lf
 *.unity text eol=lf
+
+Assets/Plugins/** linguist-vendored
