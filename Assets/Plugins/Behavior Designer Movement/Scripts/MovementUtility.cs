@@ -156,7 +156,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 }
             } else {
                 RaycastHit hit;
-                if (Physics.Linecast(transform.TransformPoint(positionOffset), targetObject.transform.TransformPoint(targetOffset), out hit, ~ignoreLayerMask, QueryTriggerInteraction.Ignore)) {
+                if (Physics.Linecast(transform.TransformPoint(positionOffset), targetObject.transform.TransformPoint(targetOffset), out hit, ~ignoreLayerMask, QueryTriggerInteraction.UseGlobal)) {
                     hitTransform = hit.transform;
                 }
             }

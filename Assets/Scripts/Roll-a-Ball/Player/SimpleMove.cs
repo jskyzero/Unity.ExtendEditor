@@ -9,13 +9,20 @@ public class SimpleMove : MonoBehaviour {
   [SerializeField]
   private Rigidbody rb;
 
+  public float moveHorizontal;
+  public float moveVertical;
+
   private void Start() {
     rb = GetComponent<Rigidbody>();
   }
 
   private void FixedUpdate() {
-    float moveHorizontal = Input.GetAxis("Horizontal");
-    float moveVertical = Input.GetAxis("Vertical");
+    if (Input.GetAxis("Horizontal") != 0) {
+      moveHorizontal = Input.GetAxis("Horizontal");
+    }
+    if (Input.GetAxis("Vertical") != 0) {
+      moveVertical = Input.GetAxis("Vertical");
+    }
 
     Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
     Move(movement);
