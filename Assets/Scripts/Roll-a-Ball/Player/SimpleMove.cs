@@ -5,7 +5,7 @@ using UnityEngine;
 public class SimpleMove : MonoBehaviour {
   public float speed = 2.0f;
   // public float jumpForce = 200.0f;
-  public GameObject system;
+  // public GameObject system;
   [SerializeField]
   private Rigidbody rb;
 
@@ -41,11 +41,11 @@ public class SimpleMove : MonoBehaviour {
     rb.AddForce(movement * speed);
   }
 
-  private void OnTriggerEnter(Collider other) {
-    if (other.gameObject.CompareTag("PickUp")) {
-      other.gameObject.SetActive(false);
-    }
+  // private void OnTriggerEnter(Collider other) {
+  //   if (other.gameObject.CompareTag("PickUp")) {
+  //     other.gameObject.SetActive(false);
+  //   }
 
-    system.SendMessage("AddScore", null);
-  }
+  //   system.SendMessage("AddScore", null);
+  // }
 }
