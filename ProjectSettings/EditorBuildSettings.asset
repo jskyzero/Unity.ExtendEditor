@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Scenes/Boot.unity
+    guid: 3f49e451ef8724c4dadc37a423574fd9
+  - enabled: 1
+    path: Assets/_Scenes/Roll-a-ball-2.unity
+    guid: 34577d0a505539048a8df984c95e0afb
+  - enabled: 1
     path: Assets/_Scenes/Roll-a-ball.unity
     guid: b93ab7482a48d4958b087158003465a8
   m_configObjects: {}
