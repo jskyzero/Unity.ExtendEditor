@@ -130,13 +130,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1522971405, guid: 66900916f17de0d4486e95125bb6746f, type: 3}
+      propertyPath: fsm.states.Array.data[0].actionData.fsmOwnerDefaultParams.Array.data[0].gameObject.value
+      value: 
+      objectReference: {fileID: 2001245664}
+    - target: {fileID: 1522971405, guid: 66900916f17de0d4486e95125bb6746f, type: 3}
+      propertyPath: fsm.states.Array.data[1].actionData.fsmOwnerDefaultParams.Array.data[0].gameObject.value
+      value: 
+      objectReference: {fileID: 2001245664}
     - target: {fileID: 1078745191047446, guid: 66900916f17de0d4486e95125bb6746f, type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 4804440988803728, guid: 66900916f17de0d4486e95125bb6746f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4804440988803728, guid: 66900916f17de0d4486e95125bb6746f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -215,6 +223,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66900916f17de0d4486e95125bb6746f, type: 3}
+--- !u!1 &326361593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6198404751115547618, guid: 66900916f17de0d4486e95125bb6746f,
+    type: 3}
+  m_PrefabInstance: {fileID: 326361592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &326361600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3931443197710395093, guid: 66900916f17de0d4486e95125bb6746f,
+    type: 3}
+  m_PrefabInstance: {fileID: 326361592}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326361593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4bbdcf873a4164eabf85f0d7820717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &518064213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -387,23 +413,34 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 50
+        x: 82
         y: 100
         width: 100
-        height: 16
+        height: 32
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
-      transitions: []
+      transitions:
+      - fsmEvent:
+          name: FINISHED
+          isSystemEvent: 1
+          isGlobal: 0
+        toState: "\u63D0\u793A"
+        linkStyle: 0
+        linkConstraint: 0
+        linkTarget: 0
+        colorIndex: 0
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.SetGameObject
+        - HutongGames.PlayMaker.Actions.SetGameObject
         customNames:
         - 
-        actionEnabled: 01
-        actionIsOpen: 01
-        actionStartIndex: 00000000
-        actionHashCodes: 4d51cf04
+        - 
+        actionEnabled: 0100
+        actionIsOpen: 0101
+        actionStartIndex: 0000000003000000
+        actionHashCodes: 4d51cf044d51cf04
         unityObjectParams: []
         fsmGameObjectParams:
         - useVariable: 1
@@ -418,6 +455,18 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: {fileID: 1167913762}
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 326361593}
         fsmOwnerDefaultParams: []
         animationCurveParams: []
         functionCallParams: []
@@ -439,19 +488,146 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams: []
-        byteData: 00
+        byteData: 0000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 130000001300000001000000
+        paramDataType: 130000001300000001000000130000001300000001000000
         paramName:
         - variable
         - gameObject
         - everyFrame
-        paramDataPos: 000000000100000000000000
-        paramByteDataSize: 000000000000000001000000
-    events: []
+        - variable
+        - gameObject
+        - everyFrame
+        paramDataPos: 000000000100000000000000020000000300000001000000
+        paramByteDataSize: 000000000000000001000000000000000000000001000000
+    - name: "\u63D0\u793A"
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 72
+        y: 171
+        width: 100
+        height: 32
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions:
+      - fsmEvent:
+          name: FINISHED
+          isSystemEvent: 1
+          isGlobal: 0
+        toState: Loop
+        linkStyle: 0
+        linkConstraint: 0
+        linkTarget: 0
+        colorIndex: 0
+      actionData:
+        actionNames:
+        - Jsky.Actions.NotificationAction
+        customNames:
+        - 
+        actionEnabled: 01
+        actionIsOpen: 01
+        actionStartIndex: 00000000
+        actionHashCodes: d4ab4001
+        unityObjectParams:
+        - {fileID: 326361600}
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams:
+        - 123
+        - 1233
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 050000000300000003000000
+        paramName:
+        - myNotification
+        - title
+        - content
+        paramDataPos: 000000000000000001000000
+        paramByteDataSize: 000000000000000000000000
+    - name: Loop
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 60
+        y: 250
+        width: 100
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
+    events:
+    - name: FINISHED
+      isSystemEvent: 1
+      isGlobal: 0
     globalTransitions: []
     variables:
       floatVariables: []
@@ -540,6 +716,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1769902373, guid: a9920b746de07844c9c50d997deb89a9, type: 3}
+      propertyPath: fsm.states.Array.data[1].position.x
+      value: 221
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769902373, guid: a9920b746de07844c9c50d997deb89a9, type: 3}
+      propertyPath: fsm.states.Array.data[1].position.y
+      value: 149
+      objectReference: {fileID: 0}
     - target: {fileID: 1785068582989628, guid: a9920b746de07844c9c50d997deb89a9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -590,6 +774,86 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9920b746de07844c9c50d997deb89a9, type: 3}
+--- !u!1 &2001245664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1126998150106112, guid: 379695d62643c204a9a21ceabf122ce9,
+    type: 3}
+  m_PrefabInstance: {fileID: 518064213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3970538987747522372
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840513311620635915, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664396502391623833, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_Name
+      value: Level-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664396502391623833, guid: a395b299ec087264b805b9c06cf226a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a395b299ec087264b805b9c06cf226a2, type: 3}
 --- !u!1001 &5644861670568114833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -610,7 +874,7 @@ PrefabInstance:
     - target: {fileID: 1184930360591157349, guid: b4c85c7a6039d484e81423d12b72cc3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1184930360591157349, guid: b4c85c7a6039d484e81423d12b72cc3f,
         type: 3}
@@ -652,10 +916,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2626029048363351184, guid: b4c85c7a6039d484e81423d12b72cc3f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5702734269974480375, guid: b4c85c7a6039d484e81423d12b72cc3f,
         type: 3}
       propertyPath: m_Name
       value: Level-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702734269974480375, guid: b4c85c7a6039d484e81423d12b72cc3f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643991508777106287, guid: b4c85c7a6039d484e81423d12b72cc3f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c85c7a6039d484e81423d12b72cc3f, type: 3}
