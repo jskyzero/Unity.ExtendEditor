@@ -223,7 +223,9 @@ namespace HutongGames.PlayMakerEditor
         // NOTE: might be a better way to do this. Currently doesn't catch project changes like imports...
         private static string GetProjectSignature()
         {
-            return Application.unityVersion + "__" + Application.dataPath + "__" + GetInformationalVersion(Assembly.GetExecutingAssembly()); ;
+            // return Application.unityVersion + "__" + Application.dataPath + "__" + GetInformationalVersion(Assembly.GetExecutingAssembly()); ;
+            return Application.unityVersion + "__" + GetInformationalVersion(Assembly.GetExecutingAssembly()); ;
+
         }
 
         public static string GetInformationalVersion(Assembly assembly)
