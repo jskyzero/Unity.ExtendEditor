@@ -1,6 +1,7 @@
 # add by jskyzero
 *.log
 ~*
+.idea
 
 /[Ll]ibrary/
 /[Tt]emp/
