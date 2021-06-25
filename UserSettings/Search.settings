@@ -61,5 +61,6 @@ providers = {
 	}
 }
 recentSearches = [
+	"PlayMakerFSM"
 ]
 savedSearchesSortOrder = 0
